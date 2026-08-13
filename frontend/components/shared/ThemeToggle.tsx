@@ -9,14 +9,19 @@ export function ThemeToggle() {
   useEffect(() => {
     // Check localStorage for theme preference
     const storedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+    // Default to light mode
+    if (storedTheme === 'dark') {
       setDarkMode(true);
       document.documentElement.classList.add('dark');
     } else {
+      // Default: light mode
       setDarkMode(false);
       document.documentElement.classList.remove('dark');
+      // Only save if not already set
+      if (!storedTheme) {
+        localStorage.setItem('theme', 'light');
+      }
     }
   }, []);
 
