@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.database import engine, Base
-from app.api.v1 import router
 import app.models
 
 # Create database tables
@@ -13,17 +12,19 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# CORS configuration
+# CORS configuration - UPDATE THIS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[
+        "http://localhost:3000",           # Local development
+        "https://acreage-seven.vercel.app", # Your Vercel frontend URL
+        "https://acreage.vercel.app",      # Your other Vercel URL
+        "https://acreage-wek1.onrender.com", # Your Render backend
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Include API routes
-app.include_router(router)
 
 @app.get("/")
 async def root():
