@@ -3,8 +3,8 @@ import "./globals.css";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: "Acreage - Find Your Perfect Stay",
-  description: "Discover handpicked accommodations for every journey — from cozy cabins to luxury villas.",
+  title: "Acreage - Vacation Rental Marketplace",
+  description: "Find a place worth staying.",
 };
 
 export default function RootLayout({
